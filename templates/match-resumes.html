@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Resume Match Results</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Resume Match Results</h2>
+    <div class="table-responsive">
+    <table class="table table-success table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Similarity Score</th>
+            <th>Ranking</th>
+        </tr>
+        {% for resume, similarity in sorted_resumes %}
+        <tr>
+            <td>{{ resume[1] }}</td>
+            <td>{{ resume[2] }}</td>
+            <td>{{ '%.2f' % (similarity * 100) }}%</td>
+            <td>{{ loop.index }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

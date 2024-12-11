@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    
+        <title>Skill Match: Get Your Resume Seen by the Perfect Match</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    
+        <!-- Additional CSS Files -->
+        <link href="{{ url_for('static', filename='css/animated.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/fontawesome.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/owl.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/templatemo-chain-app-dev.css') }}" rel="stylesheet">
+    </head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Welcome, {{ session['username'] }}!</h1>
+        <a href="/logout" class="btn btn-danger mt-3 float-right">Logout</a>
+    </div>
+    
+    <div class="container">
+        <h1 class="mt-5">Job Descriptions</h1>
+        <table class="table mt-4">
+            <thead>
+                <tr class="job-description-box">
+                    <th scope="col" class="job-attribute">Job Title</th>
+                    <th scope="col" class="job-attribute">Job Description</th>
+                    <th scope="col" class="job-attribute">Required Skills</th>
+                    <th scope="col" class="job-attribute">Qualifications</th>
+                    <th scope="col" class="job-attribute">Experience</th>
+                    <th scope="col" class="job-attribute">Education</th>
+                    <th scope="col" class="job-attribute">Location</th>
+                    <th scope="col" class="job-attribute">Salary</th>
+                    <th scope="col" class="job-attribute">Employment Type</th>
+                    <th scope="col" class="job-attribute">Industry</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job_description in job_descriptions %}
+                <tr>
+                    <td class="job-attribute" >{{ job_description[1] }}</td>
+                    <td class="job-attribute" >{{ job_description[2] }}</td>
+                    <td class="job-attribute" >{{ job_description[3] }}</td>
+                    <td class="job-attribute" >{{ job_description[4] }}</td>
+                    <td class="job-attribute" >{{ job_description[5] }}</td>
+                    <td class="job-attribute" >{{ job_description[6] }}</td>
+                    <td class="job-attribute" >{{ job_description[7] }}</td>
+                    <td class="job-attribute" >{{ job_description[8] }}</td>
+                    <td class="job-attribute" >{{ job_description[9] }}</td>
+                    <td class="job-attribute" >{{ job_description[10] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="location.href='/match-resumes'" class="btn btn-info mt-3">Match Resumes</button>
+    </div>
+    <div class="container">
+        <h1 class="mt-5">Job Description Form</h1>
+        <form class="mt-4" action="/submit-description" method="post">
+            <div class="form-group">
+                <label for="job_title">Job Title:</label>
+                <input type="text" class="form-control" id="job_title" name="job_title" required>
+            </div>
+            <div class="form-group">
+                <label for="job_description">Job Description:</label>
+                <textarea class="form-control" id="job_description" name="job_description" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="required_skills">Required Skills:</label>
+                <textarea class="form-control" id="required_skills" name="required_skills" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="qualifications">Qualifications:</label>
+                <textarea class="form-control" id="qualifications" name="qualifications" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience:</label>
+                <input type="textarea" class="form-control" id="experience" name="experience">
+            </div>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <input type="text" class="form-control" id="education" name="education">
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" name="location">
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary:</label>
+                <input type="text" class="form-control" id="salary" name="salary">
+            </div>
+            <div class="form-group">
+                <label for="employment_type">Employment Type:</label>
+                <select class="form-control" id="employment_type" name="employment_type" required>
+                    <option value="">Select Employment Type</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Temporary">Temporary</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="industry">Industry:</label>
+                <input type="text" class="form-control" id="industry" name="industry">
+            </div>
+            <button type="submit-description" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
