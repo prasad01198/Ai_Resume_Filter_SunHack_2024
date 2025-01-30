@@ -17,9 +17,9 @@ app.secret_key = 'your_secret_key'
 # Database Configuration and Connection Pooling
 db_config = {
     "host": "localhost",
-    "user": "root",
-    "password": "Prasad@1998",
-    "database": "resume_filter"
+    "user": "DB_USERNAME",
+    "password": "DB_PASSWORD",
+    "database": "DB_NAME"
 }
 try:
     connection_pool = pooling.MySQLConnectionPool(pool_name="mypool", pool_size=5, **db_config)
