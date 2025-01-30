@@ -17,9 +17,9 @@ app = Flask(__name__, static_url_path='/static')
 # Database connection details
 conn = mysql.connector.connect(
     host='localhost',
-    user='root',
-    password='Prasad@1998',
-    database='resume_filter'
+    user='DB_USER_NAME',
+    password='DB_PASSWORD',
+    database='DB_NAME'
 )
 
 cursor = conn.cursor()
